@@ -1,23 +1,24 @@
-mixed-port: 7890
 proxies:
-  - name: "us-server"
-    type: ss
-    server: example.com  # 替换为实际服务器地址
-    port: 8388           # 替换为实际端口
-    cipher: aes-256-gcm
-    password: "123123"
+  - name: "iproyal-us-gEdWdq66"
+    type: http
+    server: proxyus.rola.vip
+    port: 1000
+    username: "fangtang_1"
+    password: "x6oy8q"
     udp: true
-    plugin: obfs
-    plugin-opts:
-      mode: tls
-      host: example.com   # 替换为混淆用的域名
+    skip-cert-verify: true
+    # 元数据
+    country: us
+    session: gEdWdq66
+    lifetime: 5s
 
 proxy-groups:
-  - name: "PROXY"
+  - name: "IPRoyal Proxy"
     type: select
     proxies:
-      - "us-server"
+      - "iproyal-us-gEdWdq66"
 
+# 基本规则（可根据需要调整）
 rules:
-  - GEOIP,US,DIRECT      # 美国IP直连
-  - MATCH,PROXY          # 其他走代理
+  - GEOIP,CN,DIRECT
+  - MATCH,IPRoyal Proxy
