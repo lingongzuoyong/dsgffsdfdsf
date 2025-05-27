@@ -1,19 +1,23 @@
 mixed-port: 7890
 proxies:
-  - name: "IPRoyal US"
-    type: socks5
-    server: geo.iproyal.com
-    port: 12321
-    username: 4q48wOAU1efEYJfc
-    password: 123123
+  - name: "us-server"
+    type: ss
+    server: example.com  # 替换为实际服务器地址
+    port: 8388           # 替换为实际端口
+    cipher: aes-256-gcm
+    password: "123123"
     udp: true
+    plugin: obfs
+    plugin-opts:
+      mode: tls
+      host: example.com   # 替换为混淆用的域名
 
 proxy-groups:
   - name: "PROXY"
     type: select
     proxies:
-      - "IPRoyal US"
-      
+      - "us-server"
+
 rules:
-  - GEOIP,CN,DIRECT
-  - MATCH,PROXY
+  - GEOIP,US,DIRECT      # 美国IP直连
+  - MATCH,PROXY          # 其他走代理
