@@ -1,7 +1,19 @@
+mixed-port: 7890
 proxies:
-  - name: "iproyal-fr"
-    type: http
+  - name: "IPRoyal US"
+    type: socks5
     server: geo.iproyal.com
     port: 12321
     username: 4q48wOAU1efEYJfc
-    password: 123123_country-fr
+    password: 123123
+    udp: true
+
+proxy-groups:
+  - name: "PROXY"
+    type: select
+    proxies:
+      - "IPRoyal US"
+      
+rules:
+  - GEOIP,CN,DIRECT
+  - MATCH,PROXY
