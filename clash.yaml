@@ -1,0 +1,7 @@
+proxies:
+  - name: "iproyal-fr"
+    type: http
+    server: geo.iproyal.com
+    port: 12321
+    username: 4q48wOAU1efEYJfc
+    password: 123123_country-fr
